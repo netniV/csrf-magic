@@ -392,7 +392,12 @@ function csrf_generate_secret($len = 32) {
  */
 function csrf_hash($value, $time = null) {
     if (!$time) $time = time();
-    return sha1(csrf_get_secret() . $value . $time) . ',' . $time;
+    if (function_exists("hash_hmac")) {
+        return hash_hmac('sha1', $time . ':' . $value, csrf_get_secret()) . ',' . $time;
+    } else {
+        $secret = csrf_get_secret();
+        return sha1($secret . sha1($secret . $time . ':' . $value)) . ',' . $time;
+    }
 }
 
 // Load user configuration

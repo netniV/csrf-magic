@@ -8,6 +8,10 @@
     - In some server environments, IP address was not being detected
       properly.  Thanks Bianka Martinovic for reporting.
 
+  [SECURITY FIXES]
+
+    - Hashing now uses an HMAC to prevent length extension attacks.
+
 1.0.4 released 2013-07-17
 
   [SECURITY FIXES]
