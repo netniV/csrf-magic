@@ -217,7 +217,7 @@ function csrf_get_tokens() {
     $secret = csrf_get_secret();
     if (!$has_cookies && $secret) {
         // :TODO: Harden this against proxy-spoofing attacks
-        $ip = ';ip:' . csrf_hash($_SERVER['IP_ADDRESS']);
+        $ip = ';ip:' . csrf_hash($_SERVER['REMOTE_ADDR']);
     } else {
         $ip = '';
     }

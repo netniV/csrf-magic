@@ -1,6 +1,13 @@
 
                             [[     news     ]]
 
+1.0.5 released 2014-07-24
+
+  [BUG FIXES]
+
+    - In some server environments, IP address was not being detected
+      properly.  Thanks Bianka Martinovic for reporting.
+
 1.0.4 released 2013-07-17
 
   [SECURITY FIXES]
