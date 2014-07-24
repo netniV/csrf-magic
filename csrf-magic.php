@@ -16,6 +16,12 @@
 // CONFIGURATION:
 
 /**
+ * Convenience parameter for disabling all of our functionality;
+ * equivalent to setting 'rewrite' to false and 'defer' to true.
+ */
+$GLOBALS['csrf']['disable'] = false;
+
+/**
  * By default, when you include this file csrf-magic will automatically check
  * and exit if the CSRF token is invalid. This will defer executing
  * csrf_check() until you're ready.  You can also pass false as a parameter to
@@ -402,7 +408,9 @@ function csrf_hash($value, $time = null) {
 
 // Load user configuration
 if (function_exists('csrf_startup')) csrf_startup();
-// Initialize our handler
-if ($GLOBALS['csrf']['rewrite'])     ob_start('csrf_ob_handler');
-// Perform check
-if (!$GLOBALS['csrf']['defer'])      csrf_check();
+if (!$GLOBALS['csrf']['disable']) {
+    // Initialize our handler
+    if ($GLOBALS['csrf']['rewrite'])     ob_start('csrf_ob_handler');
+    // Perform check
+    if (!$GLOBALS['csrf']['defer'])      csrf_check();
+}

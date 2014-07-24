@@ -12,6 +12,11 @@
 
     - Hashing now uses an HMAC to prevent length extension attacks.
 
+  [FEATURE]
+
+    - New option 'disable' which allows you to conditionally disable
+      the CSRF protection.  Requested by Justin Carlson.
+
 1.0.4 released 2013-07-17
 
   [SECURITY FIXES]
